@@ -46,7 +46,6 @@ describe('Register Use Case', () => {
 
     it('should not be able to register with same twice', async () => {
         const email = 'johndoe@example.com';
-        console.log(usersRepository);
     
         await sut.execute({
             name: 'John Doe',
@@ -54,8 +53,8 @@ describe('Register Use Case', () => {
             password: '123456',
         });
     
-        expect(async () =>
-            await sut.execute({
+        await expect(() =>
+            sut.execute({
                 name: 'John Doe',
                 email,
                 password: '123456',
